@@ -19,14 +19,14 @@
  */
 ;(function()
 {
-	// CommonJS
-	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+    // CommonJS
+    typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
 
-	function Brush()
-	{
-		// Perl Brush Contributed by David Simmons-Duffin and Marty Kube
-	
-		var funcs = 
+    function Brush()
+    {
+        // Perl Brush Contributed by David Simmons-Duffin and Marty Kube
+    
+        var funcs = 
             'alert collect contain create_resources crit debug defined each ' +
             'emerg epp err extlookup fail file filter fqdn_rand generate hiera ' +
             'hiera_array hiera_hash hiera_include include info inline_epp ' +
@@ -34,7 +34,7 @@
             'require search select sha1 shellquote slice split sprintf ' +
             'tag tagged template versioncmp warning';
     
-		var keywords =  
+        var keywords =  
             'and case class default define else elsif false if in import ' +
             'inherits node or true undef unless';
 
@@ -56,25 +56,25 @@
             return [new matcher(match[1], match.index + match[0].indexOf(match[1]), 'functions')]
         }
     
-		this.regexList = [
-			{ regex: new RegExp('#[^!].*$', 'gm'),					css: 'comments' }, // same as perl
-			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,	css: 'string' }, // same as perl
-			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,	css: 'string' }, // same as perl
+        this.regexList = [
+            { regex: new RegExp('#[^!].*$', 'gm'),                  css: 'comments' }, // same as perl
+            { regex: SyntaxHighlighter.regexLib.doubleQuotedString, css: 'string' }, // same as perl
+            { regex: SyntaxHighlighter.regexLib.singleQuotedString, css: 'string' }, // same as perl
             { regex: new RegExp('(\\$\\w+|\\${[^}]})', 'g'),        css: 'variable' },
             { regex: new RegExp('^\\s *([a-z][a-zA-Z0-9_:-]*)\\s+{', 'gm'), func: extract(1, 'functions') },
-			{ regex: new RegExp(this.getKeywords(funcs), 'gmi'),	css: 'functions' },
-			{ regex: new RegExp(this.getKeywords(keywords), 'gm'),	css: 'keyword' }
+            { regex: new RegExp(this.getKeywords(funcs), 'gmi'),    css: 'functions' },
+            { regex: new RegExp(this.getKeywords(keywords), 'gm'),  css: 'keyword' }
 
-		    ];
+            ];
 
-		this.forHtmlScript(SyntaxHighlighter.regexLib.phpScriptTags);
-	}
+        this.forHtmlScript(SyntaxHighlighter.regexLib.phpScriptTags);
+    }
 
-	Brush.prototype	= new SyntaxHighlighter.Highlighter();
-	Brush.aliases		= ['puppet', 'pp'];
+    Brush.prototype = new SyntaxHighlighter.Highlighter();
+    Brush.aliases       = ['puppet', 'pp'];
 
-	SyntaxHighlighter.brushes.Perl = Brush;
+    SyntaxHighlighter.brushes.Perl = Brush;
 
-	// CommonJS
-	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
+    // CommonJS
+    typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
 })();
