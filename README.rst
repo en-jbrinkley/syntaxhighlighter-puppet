@@ -15,7 +15,7 @@ Highlights Puppet keywords and reserved function names, strings and variables an
 Information
 -----------
 
-* `Puppet Langage`_
+* `Puppet Language`_
 * `Puppet-mode`_
 
 .. _`Puppet Language`: http://docs.puppetlabs.com/puppet/latest/reference/lang_visual_index.html
