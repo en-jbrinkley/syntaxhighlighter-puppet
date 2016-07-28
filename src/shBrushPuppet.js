@@ -20,7 +20,7 @@
 ;(function()
 {
     // CommonJS
-    typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+    SyntaxHighlighter = SyntaxHighlighter || (typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null);
 
     function Brush()
     {
@@ -64,8 +64,7 @@
             { regex: new RegExp('^\\s *([a-z][a-zA-Z0-9_:-]*)\\s+{', 'gm'), func: extract(1, 'functions') },
             { regex: new RegExp(this.getKeywords(funcs), 'gmi'),    css: 'functions' },
             { regex: new RegExp(this.getKeywords(keywords), 'gm'),  css: 'keyword' }
-
-            ];
+        ];
 
         this.forHtmlScript(SyntaxHighlighter.regexLib.phpScriptTags);
     }
@@ -73,7 +72,7 @@
     Brush.prototype = new SyntaxHighlighter.Highlighter();
     Brush.aliases       = ['puppet', 'pp'];
 
-    SyntaxHighlighter.brushes.Perl = Brush;
+    SyntaxHighlighter.brushes.Puppet = Brush;
 
     // CommonJS
     typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
